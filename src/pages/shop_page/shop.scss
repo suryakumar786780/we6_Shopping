@@ -1,0 +1,59 @@
+@use '../login/login.scss';
+
+.outer {
+    @extend .outer;
+    position: relative;
+}
+
+.inner {
+    @extend .inner;
+    .navs{
+        width: 85%;
+    }
+
+    .products {
+        width: 82%;
+        position: absolute;
+        top: 15%;
+        z-index: 1;
+        max-height: 40rem;
+        overflow-y: scroll;
+
+        .card-item {
+            min-width: 30% !important;
+            margin-top: 1rem;
+            background: rgba(255, 255, 255, 0.50);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+
+            .MuiPaper-root {
+                height: 23rem;
+            }
+        }
+    }
+
+    .products::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .products {
+        top: 30% !important;
+    }
+
+    .select-div {
+        display: block !important;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+
+    .products {
+        top: 35% !important;
+        width: 77% !important;
+    }
+}

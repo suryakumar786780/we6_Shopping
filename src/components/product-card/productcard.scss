@@ -1,0 +1,89 @@
+.pro-card {
+    .MultiGrid-container {
+        .MuiGrid-root {
+            min-width: 30% !important;
+            background-color: none,
+        }
+    }
+
+    .icons {
+        display: flex;
+        justify-content: space-between;
+
+        svg {
+            font-size: 1rem;
+        }
+    }
+
+    .zoomicon:hover,
+    .bagicon:hover {
+        border: 1px solid black;
+        background-color: black;
+        fill: white;
+        color: white;
+    }
+
+    .roundBorder {
+        border: 1px solid rgb(147, 145, 145);
+        padding: 0.4rem;
+        border-radius: 50%;
+        display: flex;
+    }
+
+    .bg-product {
+        height: 7rem;
+        width: 90%;
+        margin: auto;
+        border-radius: 20px;
+        position: relative;
+    }
+
+    .bg-product-inner {
+        background-color: rgb(226, 231, 85);
+        height: 9rem;
+        width: 42%;
+        margin: auto;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 48.5%;
+        z-index: 0;
+        left: 30%;
+        border: 5px solid white;
+        display: flex;
+
+        .MuiCardMedia-root{
+            width: 80%;
+            margin: auto;
+        }
+    }
+
+    @mixin card-content {
+        color: black;
+        display: flex;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        width: 85%;
+        font-weight: bolder;
+
+    }
+
+    .card-content-1 {
+        @include card-content();
+        font-size: 1.2rem;
+        bottom: 18%;
+    }
+
+    .card-content-2 {
+        @include card-content();
+        font-size: 1rem;
+        bottom: 11%;
+    }
+
+    .img-zoom:hover{
+        // width: '80 !important'
+        width: 100% !important;
+        display: flex;
+        align-items: center;
+    }
+}

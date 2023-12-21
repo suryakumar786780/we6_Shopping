@@ -1,0 +1,31 @@
+$size:100%;
+$padding:10px;
+$primaryColor: #725391;
+.width{
+    width: $size;
+}
+.d-flex{
+    display: flex;
+}
+.pr-10{
+    padding-right: 10px;
+}
+@mixin padding($padding){
+    padding: 1.5rem;
+}
+.text-decoration-none{
+    list-style: none;
+    text-decoration: none;
+}
+.justify-around{
+    justify-content: space-around;
+}
+.align-center{
+    align-items: center;
+}
+.about{
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}

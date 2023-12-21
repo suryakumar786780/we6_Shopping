@@ -1,0 +1,31 @@
+.card {
+    background-color: #F8F9FD !important;
+}
+
+.partners {
+    display: flex;
+}
+
+.company-count {
+    width: 20%;
+    text-align: center;
+    border-right: 1px solid #989AAB;
+
+    div {
+        font-size: 40px;
+        color: orange;
+    }
+}
+
+.image-gallery {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 17px;
+
+    img {
+        width: 60px;
+        height: 60px;
+    }
+}

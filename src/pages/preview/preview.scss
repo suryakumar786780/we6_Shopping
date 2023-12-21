@@ -1,0 +1,197 @@
+@use '../login/login.scss';
+
+.product-details {
+    position: absolute;
+    margin: 0 5rem;
+    top: 18%;
+    width: 73%;
+
+    .back {
+        margin-bottom: 2rem;
+
+        button {
+            color: black;
+            font-weight: bold;
+            border: 1px solid purple;
+            background-color: plum;
+        }
+    }
+
+    .details {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        background-color: white;
+        padding: 3vw 4vw;
+        border-radius: 40px;
+        background: rgba(255, 255, 255, 0.45);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        z-index: 1;
+        overflow-y: auto;
+        max-height: 30rem;
+        scrollbar-width: 20%;
+
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        margin-right: 200px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: violet;
+    }
+
+
+    .detail {
+        width: 30%;
+
+        .name {
+            font-size: 1.5vw;
+            font-weight: bold;
+        }
+
+        .description {
+            margin-top: 15px;
+            color: rgb(59, 58, 58);
+        }
+
+        .angles {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+
+            div {
+                width: 25%;
+                height: 4rem;
+                border-radius: 20px;
+                background-color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+    .pro-img {
+        width: 27%;
+        border-radius: 50%;
+        height: 15rem;
+        margin: auto;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        .pro-img-1 {
+            position: absolute;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .pro-img-bg {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            width: 115%;
+            height: 18rem;
+            background-color: transparent;
+            border-top: 4px solid gray;
+            border-bottom: 4px solid gray;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .price {
+            margin-top: 15px;
+        }
+    }
+
+    .pro-rating {
+        width: 30%;
+
+        div {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .rating {
+
+            display: flex;
+            align-items: center;
+
+            .MuiRating-root {
+                margin: 0 10px;
+            }
+        }
+
+        .colors {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+
+            .color {
+                margin-left: 1.2rem;
+                display: flex;
+                justify-content: space-between;
+                width: 12%;
+                height: 2rem;
+                border-radius: 50%;
+                // background-color: white;
+                position: relative;
+
+                .inner-color {
+                    width: 76%;
+                    height: 1.4rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    top: 12%;
+                    left: 13%;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        .sizes {
+            margin-top: 20px;
+            display: inline-grid;
+            column-gap: 10px;
+            row-gap: 10px;
+            grid-template-columns: auto auto auto;
+
+            .size {
+                cursor: pointer;
+                margin-left: 20px;
+                grid-row: auto;
+                background: rgba(255, 255, 255, 0.5);
+                border-radius: 10px;
+                padding: 8px 12px;
+            }
+
+            .size:hover {
+                background-color: rgb(225, 173, 242);
+            }
+        }
+
+        .add-cart {
+            margin-top: 30px;
+            background-color: black;
+            color: gold;
+            width: fit-content;
+            padding: 15px 40px;
+            border-radius: 19px;
+
+        }
+    }
+}

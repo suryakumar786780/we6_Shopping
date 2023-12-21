@@ -1,0 +1,99 @@
+main {
+
+    padding: 4rem 0;
+
+    .img-container {
+        margin: auto;
+        position: relative;
+        height: 28rem;
+        width: 45%;
+        display: flex;
+        justify-content: right;
+
+        img {
+            z-index: 1;
+            position: absolute;
+            height: 100%;
+            width: 400px;
+            left: 37%;
+        }
+
+    }
+
+    .img-bg {
+        padding: 2rem 0;
+        background: rgba(255, 255, 255, 0);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        position: absolute;
+        height: 84%;
+        width: 58%;
+        bottom: 0;
+        right: 4%;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        margin: auto;
+
+        .text-container {
+            width: 50%;
+
+            .assistant_text {
+                width: 90%;
+                font-size: 3.9vw;
+                color: white;
+            }
+        }
+
+        .img-container {
+            height: 28rem;
+            width: 50%;
+        }
+    }
+
+    .form-div {
+        p {
+            // color: #BEB8D7;
+            color: white;
+            margin: 1rem 0;
+        }
+
+        .input-div form {
+            width: 33%;
+        }
+
+        input {
+            height: 2.5rem;
+            width: 18rem;
+            color: white;
+            background-color: transparent;
+            border: 1px solid #BEB8D7;
+            border-top-left-radius: 5px;
+            border-end-start-radius: 5px;
+            padding: 5px;
+            font-size: 17px;
+        }
+
+        button {
+            width: 15%;
+            font-size: 17px;
+            font-weight: bold;
+            color: white;
+            background-color: orange;
+            border: none;
+            border-top-right-radius: 5px;
+            border-end-end-radius: 5px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(245, 201, 122);
+        }
+    }
+}

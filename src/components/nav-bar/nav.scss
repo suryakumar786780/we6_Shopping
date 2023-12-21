@@ -1,0 +1,73 @@
+.fullnav {
+    padding: 2rem;
+    position: sticky;
+    top: 0;
+    background: transparent;
+    background: linear-gradient(90deg, rgba(117, 85, 147, 1) 0%, rgba(147, 106, 163, 1) 6%, rgba(194, 144, 196, 1) 16%, rgba(249, 188, 234, 1) 60%, rgba(196, 147, 199, 1) 83%, rgba(177, 132, 187, 1) 92%, rgba(117, 85, 147, 1) 100%);
+    z-index: 2;
+
+    .inside {
+        width: 85%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.logo {
+    width: 15%;
+
+    .logo-icon {
+        font-size: 3rem;
+        color: white;
+    }
+
+    p {
+        color: white;
+    }
+}
+
+nav {
+    width: 25%;
+
+    ul {
+        justify-content: space-around;
+    }
+
+    li {
+        color: white;
+        text-align: center;
+        padding: 7px 15px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    li:hover {
+        text-decoration: underline;
+    }
+}
+
+.cart {
+    width: 18%;
+    display: flex;
+    justify-content: space-around;
+
+    div {
+        cursor: pointer;
+        padding: 4px 12px;
+        display: flex;
+        margin: auto;
+    }
+}
+
+.cart div:hover {
+    border-radius: 20px;
+    background-color: violet;
+}
+
+.active {
+    color: black;
+    font-weight: bold;
+    background-color: violet;
+}
