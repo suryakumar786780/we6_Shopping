@@ -1,5 +1,5 @@
 .fixed-div {
-    background-color: rgb(225, 173, 242);
+
     width: 98%;
     position: sticky;
     top: 14%;
@@ -65,13 +65,26 @@
                 border: 1px solid purple;
                 background-color: plum;
             }
+
             .disabled {
                 opacity: 0.6;
                 cursor: not-allowed;
-              }
+            }
         }
     }
 
+}
+
+.fixed-light {
+    color: white;
+    border: 1px solid purple;
+    background-color: rgb(225, 173, 242);
+}
+
+.fixed-dark {
+    border: 1px solid gray;
+    color: white;
+    background: rgb(43, 40, 40);
 }
 
 .d-none {

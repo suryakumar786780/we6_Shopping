@@ -22,7 +22,6 @@
         .card-item {
             min-width: 30% !important;
             margin-top: 1rem;
-            background: rgba(255, 255, 255, 0.50);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
@@ -32,6 +31,12 @@
             .MuiPaper-root {
                 height: 23rem;
             }
+        }
+        .dark-card{
+            background: rgba(255, 255, 255, 0.20);
+        }
+        .light-card{
+            background: rgba(255, 255, 255, 0.50);
         }
     }
 

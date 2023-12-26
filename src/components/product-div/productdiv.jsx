@@ -13,6 +13,7 @@ import { useSelector } from 'react-redux';
 const ProductDiv = ({ leftTitle, centerTitle, rightTitle, isSelect }) => {
 
   const navIds = useSelector(state =>  state.all.navIds)
+  const theme = useSelector(state =>  state.all.theme);
 
   const {id} = useParams();
   let posI = 0;
@@ -53,7 +54,7 @@ useEffect(() => {
 }, [posI])
 
   return (
-    <div className='fixed-div'>
+    <div className={`fixed-div ${theme === 'dark' ? 'fixed-dark' : 'fixed-light'}`}>
       <div className="inner-fixed-div">
         <ul>
           <div className="proshop">

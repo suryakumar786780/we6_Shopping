@@ -15,7 +15,7 @@ const PreviewImage = ({ imgsrc, imgalt, angle }) => {
                 setCurrentAngle(angleItem[ang]);
                 ang = ang === 2 ? 0 : ang + 1;
                 return () => clearInterval(intervalId);
-            }, 5000)
+            }, 2000)
         }
     }, [angle])
 console.log(currentAngle);

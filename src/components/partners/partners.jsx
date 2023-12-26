@@ -1,10 +1,6 @@
 import React from 'react'
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 
 import Adidas from "../../utils/adidas.png"
 import Xbos from "../../utils/xbos.png"
@@ -15,13 +11,14 @@ import Apple from "../../utils/apple.png"
 import Walmart from '../../utils/walmart.png'
 
 import "./partners.scss"
+import { useSelector } from 'react-redux';
 
 const Partners = () => {
-
+  const theme = useSelector(state => state.all.theme);
 
   return (
-    <Card sx={{ margin: 'auto', width: '85%', marginTop: '2rem' }} className='card' elevation={10}>
-      <CardContent className='partners'>
+    <Card sx={{ margin: 'auto', width: '85%', marginTop: '2rem', backgroundColor: theme === 'dark' ? 'black' : 'white' }} className='card' elevation={10}>
+      <CardContent className={`partners ${theme === 'dark' ? 'part-light' : 'part-dark'}`}>
         <div className='company-count'>
           <div>1800+</div>
           <p>Trusted Partners</p>

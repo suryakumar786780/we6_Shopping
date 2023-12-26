@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 import './preview.scss'
 
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getItem } from '../../features/getSingleItemSlicer';
 import ProductDiv from '../../components/product-div/productdiv';
-import NavComp from '../../components/nav-bar/nav';
 import LoaderComp from '../../components/loader';
 import RatingComp from '../../components/rating';
 import PreviewImage from '../../components/preview-div/preview_img';
@@ -50,7 +49,7 @@ const Preview = () => {
                                             <div className="angles">
                                                 {
                                                     angles.map((e) => {
-                                                        return <div key={e} className={`${e}-d`} onClick={() => setAngleImage(e)}><img src={product.product.image} style={{ transform: `rotate(${e}deg)` }} alt={product.product.title} height={45} width={45} /></div>
+                                                        return <div key={e} className={`${e}-d`} style={{backgroundColor :angle === e ?  'rgb(225, 173, 242)' : 'white'}} onClick={() => setAngleImage(e)}><img src={product.product.image} style={{ transform: `rotate(${e}deg)` }} alt={product.product.title} height={45} width={45} /></div>
                                                     })
                                                 }
                                             </div>

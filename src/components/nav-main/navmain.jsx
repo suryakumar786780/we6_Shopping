@@ -5,21 +5,23 @@ import WomenShop from "../../utils/womenshopping.png"
 import MenShop from '../../utils/mensclothing.png'
 import Jewellery from '../../utils/jewellery.png'
 import ElectonicsImg from '../../utils/electronics.png'
+import { useSelector } from 'react-redux';
 
 const NavMain = () => {
-    const [currentAngle, setCurrentAngle] = useState(0);
+    const [pos, setPos] = useState(0);
     const angleItem = [WomenShop, MenShop, Jewellery, ElectonicsImg];
+
+    const theme = useSelector(state =>  state.all.theme);
 
     useEffect(() => {
         let ang = 0;
         const intervalId = setInterval(() => {
-            setCurrentAngle(ang);
+            setPos(ang);
             ang = ang === angleItem.length - 1 ? 0 : ang + 1;
-        }, 3000)
+        }, 2000)
         return () => clearInterval(intervalId);
-
     }, [])
-console.log('currentAngle', currentAngle);
+
     return (
         <main>
             <div className='container'>
@@ -38,7 +40,7 @@ console.log('currentAngle', currentAngle);
                 </div>
                 <div className='img-container'>
                     {/* <HomeCarousel /> */}
-                    <img src={angleItem[currentAngle]} alt='we-6' width={200} height={200}/>
+                    <img src={angleItem[pos]} alt='we-6' width={200} height={200} />
                     <div className="img-bg"></div>
                 </div>
             </div>

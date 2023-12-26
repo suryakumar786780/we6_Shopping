@@ -15,12 +15,20 @@
         }
     }
 
-    .zoomicon:hover,
-    .bagicon:hover {
-        border: 1px solid black;
+    .zoomicon-dark:hover,
+    .bagicon-dark:hover {
+        border: 1px solid white;
         background-color: black;
         fill: white;
         color: white;
+    }
+
+    .zoomicon-light:hover,
+    .bagicon-light:hover {
+        border: 1px solid black;
+        background-color: white;
+        fill: black;
+        color: black;
     }
 
     .roundBorder {
@@ -39,7 +47,7 @@
     }
 
     .bg-product-inner {
-        background-color: rgb(226, 231, 85);
+        background-color: white;
         height: 9rem;
         width: 42%;
         margin: auto;
@@ -48,24 +56,31 @@
         bottom: 48.5%;
         z-index: 0;
         left: 30%;
-        border: 5px solid white;
+        border: 5px solid rgb(226, 231, 85);
         display: flex;
 
-        .MuiCardMedia-root{
+        .MuiCardMedia-root {
             width: 80%;
             margin: auto;
         }
     }
 
     @mixin card-content {
-        color: black;
         display: flex;
         position: absolute;
         align-items: center;
         justify-content: center;
         width: 85%;
-        font-weight: bolder;
+    }
 
+    .dark-font {
+        color: black;
+        font-weight: bolder;
+    }
+
+    .light-font {
+        color: white;
+        font-weight: bolder;
     }
 
     .card-content-1 {
@@ -80,8 +95,7 @@
         bottom: 11%;
     }
 
-    .img-zoom:hover{
-        // width: '80 !important'
+    .img-zoom:hover {
         width: 100% !important;
         display: flex;
         align-items: center;

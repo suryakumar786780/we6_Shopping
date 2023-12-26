@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getItems } from '../../features/getitemslicer'
 import LoaderComp from '../../components/loader'
-import NavComp from '../../components/nav-bar/nav'
 
 import ProductDiv from '../../components/product-div/productdiv'
 import ProductCard from '../../components/product-card/productcard'
@@ -28,6 +27,7 @@ const Shop = () => {
   const dispatch = useDispatch()
   const products = useSelector(state => {
     return {
+      theme: state.all.theme,
       pro: state.products,
       sortedPro: state.all.sortingType,
       catg: state.all.category,
@@ -93,9 +93,9 @@ const Shop = () => {
                     <>
                       {
                         sorting.length > 0 && sorting.map((e) => {
-                          return <Grid key={e.id} xs={12} md={5} lg={3} columnGap={3} min-Width={100} sx={{ minWidth: '30%', minHeight: '40vh' }}>
-                            <Item className='card-item'>
-                              <ProductCard id={e.id} img={e.image} title={e.title} price={e.price} rating={e.rating.rate} />
+                          return <Grid key={e.id} xs={12} md={5} lg={3} columnGap={3} min-Width={100} sx={{ minWidth: '30%' }}>
+                            <Item className={`card-item ${products.theme === 'dark' ? 'dark-card' : 'light-card'}`}>
+                              <ProductCard data={e} carticon={true}/>
                             </Item>
                           </Grid>
                         })

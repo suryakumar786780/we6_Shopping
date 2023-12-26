@@ -5,8 +5,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+.light {
   background: rgb(117, 85, 147);
   background: linear-gradient(90deg, rgba(117, 85, 147, 1) 0%, rgba(147, 106, 163, 1) 6%, rgba(194, 144, 196, 1) 16%, rgba(249, 188, 234, 1) 60%, rgba(196, 147, 199, 1) 83%, rgba(177, 132, 187, 1) 92%, rgba(117, 85, 147, 1) 100%);
+}
+
+.dark {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(43, 40, 40, 1) 11%, rgba(139, 123, 132, 1) 26%, rgba(123, 113, 124, 1) 44%, rgba(79, 74, 83, 1) 64%, rgba(70, 61, 77, 1) 80%, rgba(72, 72, 73, 1) 100%, rgba(68, 54, 69, 1) 100%);
 }
 
 code {
@@ -17,3 +26,9 @@ code {
 .cursor-pointer {
   cursor: pointer;
 }
+
+/* @media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(223, 223, 223, 1) 35%, rgba(73, 73, 73, 1) 100%)
+  }
+} */

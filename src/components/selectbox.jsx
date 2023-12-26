@@ -18,7 +18,7 @@ const SelectBox = () => {
   }
 
   return (
-    <Box sx={{ m: 1, width: { lg: '40%', md: '90%' }, marginBottom: { sm: '1rem !important' } }} >
+    <Box sx={{ m: 1, width: { lg: '40%', md: '90%' }, marginBottom: { sm: '1rem !important' }, backgroundColor:'white' }} >
       <FormControl size="small" sx={{ width: '100%' }}>
         <Select
           id="demo-simple-select"

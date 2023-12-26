@@ -113,7 +113,7 @@ export default function MiniDrawer() {
   const changeCatg = (e) => {
     dispatch(setCategory(e))
   }
-
+  const theme = useSelector(state => state.all.theme);
   useEffect(() => {
     (async () => {
       const res = await dispatch(getCategories());
@@ -125,42 +125,47 @@ export default function MiniDrawer() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <Drawer variant="permanent" open={open} PaperProps={{ sx: { backgroundColor: 'rgb(117, 85, 147)' } }}>
-        <DrawerHeader >
-          <IconButton onClick={() => setOpen(!open)} sx={{ color: 'white' }}>
-            {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {catg.length > 0 && catg.map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }} onClick={() => {setActive(index+1); changeCatg(text)}} style={{backgroundColor : active === index+1 ? 'violet' : ''}}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                  color: 'white'
-                }}
-              >
-                <ListItemIcon
+      {
+        loc.pathname !== '/' && loc.pathname !== '/about' ? <><Drawer variant="permanent" open={open} PaperProps={{ sx: { backgroundColor: theme === 'light' ? 'rgb(117, 85, 147)' : 'black', borderRight: '1px solid white' } }}>
+          <DrawerHeader >
+            <IconButton onClick={() => setOpen(!open)} sx={{ color: 'white' }}>
+              {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            </IconButton>
+          </DrawerHeader>
+          <Divider />
+          <List>
+            {catg.length > 0 && catg.map((text, index) => (
+              <ListItem key={text} disablePadding sx={{ display: 'block' }} onClick={() => { setActive(index + 1); changeCatg(text) }} style={{ backgroundColor: active === index + 1 && theme === 'dark' ?  'gray' : active === index + 1 ? 'violet' : ''}}>
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
                     color: 'white'
                   }}
                 >
-                  {cat_icons[index]}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0, textTransform: 'capitalize' }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                      color: 'white'
+                    }}
+                  >
+                    {cat_icons[index]}
+                  </ListItemIcon>
+                  <ListItemText primary={text} sx={{
+                    opacity: open ? 1 : 0, textTransform: 'capitalize', color: 'white'
+                  }} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
 
-      </Drawer>
+        </Drawer></> : ''
+      }
+
       <Box component="main" sx={{ flexGrow: 1, p: 0 }}>
         <NavComp />
         {
