@@ -3,12 +3,10 @@
 .product-details {
     position: absolute;
     margin: 0 5rem;
-    top: 18%;
+    top: 20%;
     width: 73%;
 
     .back {
-        margin-bottom: 2rem;
-
         button {
             color: black;
             font-weight: bold;
@@ -31,7 +29,7 @@
         border: 1px solid rgba(255, 255, 255, 0.18);
         z-index: 1;
         overflow-y: auto;
-        max-height: 30rem;
+        max-height: 62vh;
         scrollbar-width: 20%;
 
     }
@@ -43,7 +41,7 @@
 
     /* Handle */
     ::-webkit-scrollbar-thumb {
-        background: violet;
+        background: black;
     }
 
 
@@ -64,15 +62,29 @@
             padding: 20px 0;
             display: flex;
             justify-content: space-between;
+            
+           
+
+            .dark-size{
+                background-color: black;
+                color: white;
+                border: 1px solid white;
+            }
+            .light-size{
+                background-color: rgb(225, 173, 242);
+                color: black;
+                border: 1px solid black;
+            } 
 
             div {
-                width: 25%;
+                width: 20%;
                 height: 4rem;
                 border-radius: 20px;
-                background-color: white;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                background-color: white;
+                border: 1px solid black;
             }
         }
     }
@@ -144,20 +156,19 @@
                 display: flex;
                 justify-content: space-between;
                 width: 12%;
-                height: 2rem;
+                height: 2.3rem;
                 border-radius: 50%;
-                // background-color: white;
                 position: relative;
 
                 .inner-color {
-                    width: 76%;
-                    height: 1.4rem;
+                    width: 78%;
+                    height: 1.7rem;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     position: absolute;
-                    top: 12%;
-                    left: 13%;
+                    top: 9%;
+                    left: 12%;
                     border-radius: 50%;
                 }
             }
@@ -179,19 +190,40 @@
                 padding: 8px 12px;
             }
 
-            .size:hover {
+            .dark-size{
+                background-color: black;
+                color: white;
+                border: 1px solid white;
+            }
+            .light-size{
                 background-color: rgb(225, 173, 242);
+                color: black;
+                border: 1px solid black;
+            }
+
+            .size:hover {
+                background-color: gray;
+            }
+            .light-size:hover{
+            background-color: rgb(225, 173, 242);
             }
         }
 
-        .add-cart {
-            margin-top: 30px;
-            background-color: black;
-            color: gold;
-            width: fit-content;
-            padding: 15px 40px;
-            border-radius: 19px;
 
-        }
     }
+}
+
+.add-cart {
+    margin-top: 30px;
+    background-color: black;
+    color: gold;
+    width: fit-content;
+    padding: 15px 40px;
+    border-radius: 19px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }

@@ -25,48 +25,51 @@ const Item = styled('div')(({ theme }) => ({
 const Shop = () => {
 
   const dispatch = useDispatch()
-  const products = useSelector(state => {
-    return {
-      theme: state.all.theme,
-      pro: state.products,
-      sortedPro: state.all.sortingType,
-      catg: state.all.category,
-      catgLoading: state.catgProducts,
-    }
-  })
 
-  const [sorting, setSorting] = useState([])
-  useEffect(() => {
-    if (products.catg.length > 0) {
-      let res;
-      (async () => {
-        if (products.catg === 'All') {
-          res = await dispatch(getItems());
-        } else {
-          res = await dispatch(getCatgProducts(products.catg));
-        }
-        setSorting(res.payload)
-        const arr = getIds(res.payload);
-        dispatch(setNavIds(arr))
-      })()
-    }
-  }, [products.catg])
+  const theme = useSelector(state => state.all.theme);
+  const pro = useSelector(state => state.products);
+  const sortedPro = useSelector(state => state.all.sortingType);
+  const catg = useSelector(state => state.all.category);
+  const catgLoading = useSelector(state => state.catgProducts);
 
-  useEffect(() => {
-    let array = [...sorting];
-    if (products.sortedPro === 3) {
+  const sortArrays = (array) => {
+    if (sortedPro === 3) {
       array.sort((a, b) => a.rating.rate - b.rating.rate);
       setSorting(array)
-    } else if (products.sortedPro === 2) {
+    } else if (sortedPro === 2) {
       array.sort((a, b) => a.price - b.price);
       setSorting(array)
     } else {
       array.sort((a, b) => a.id - b.id);
       setSorting(array)
     }
+  }
+  const [sorting, setSorting] = useState([])
+
+  useEffect(() => {
+    if (catg.length > 0) {
+      let res;
+      (async () => {
+        if (catg === 'All') {
+          res = await dispatch(getItems());
+        } else {
+          res = await dispatch(getCatgProducts(catg));
+        }
+        let array = [...res.payload];
+        sortArrays(array)
+        setSorting(array)
+        const arr = getIds(array);
+        dispatch(setNavIds(arr))
+      })()
+    }
+  }, [catg])
+
+  useEffect(() => {
+    let array = [...sorting];
+    sortArrays(array)
     const arr = getIds(array);
     dispatch(setNavIds(arr))
-  }, [products.sortedPro])
+  }, [sortedPro])
 
 
   const getIds = (arr) => {
@@ -87,15 +90,15 @@ const Shop = () => {
             <Box sx={{ flexGrow: 1, }}>
               <Grid container justifyContent="space-between" gap={5} rowSpacing={5} sx={{ width: '90%', margin: 'auto !important', padding: '1vw 2vw' }}>
                 {
-                  products.pro.loading || products.catgLoading.loading ?
+                  pro.loading || catgLoading.loading ?
                     <LoaderComp />
                     :
                     <>
                       {
                         sorting.length > 0 && sorting.map((e) => {
-                          return <Grid key={e.id} xs={12} md={5} lg={3} columnGap={3} min-Width={100} sx={{ minWidth: '30%' }}>
-                            <Item className={`card-item ${products.theme === 'dark' ? 'dark-card' : 'light-card'}`}>
-                              <ProductCard data={e} carticon={true}/>
+                          return <Grid key={e.id} sx={{ minWidth: '30%' }}>
+                            <Item className={`card-item ${theme === 'dark' ? 'dark-card' : 'light-card'}`} xs={12} md={5} lg={3} columnGap={3} min-width={100}>
+                              <ProductCard data={e} favicon={true} />
                             </Item>
                           </Grid>
                         })

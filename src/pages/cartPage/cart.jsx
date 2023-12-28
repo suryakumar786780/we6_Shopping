@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import ProductDiv from '../../components/product-div/productdiv'
 import { Box, Grid } from '@mui/material'
 import styled from '@mui/system/styled';
-import ProductCard from '../../components/product-card/productcard';
 
 import './cart.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { setNavIds } from '../../features/allSlicer';
+
+import { useSelector } from 'react-redux';
+import CartCard from '../../components/cart-card/cartcard';
+import SnackBar from '../../components/snackbar';
 
 const Item = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -17,62 +18,56 @@ const Item = styled('div')(({ theme }) => ({
   textAlign: 'center',
 }));
 
+
 const CartComp = () => {
-  const cart_state = useSelector(state => {
-    return {
-      theme:state.all.theme,
-      cart: state.all.cart,
-      sortedCartItem: state.all.sortingType,
-    }
+
+  const [snack, setSnack] = useState(false);
+
+  const theme = useSelector(state => state.all.theme);
+  const cart = useSelector(state => state.all.cart);
+  const sortedCartItem = useSelector(state => state.all.sortingType);
+
+  let totalAmt = 0;
+  let totalCount = 0;
+
+  cart.forEach((e) => {
+    totalCount += +e.specs.quantity;
+    totalAmt += +e.specs.amount;
   })
-  console.log(cart_state);
-  const dispatch = useDispatch();
-  const cart_arr = cart_state.cart;
-  const [sorting, setSorting] = useState([])
-  console.log(sorting);
-  const getIds = (arr) => {
-    const ids = arr.map((e) => {
-      return e.id;
-    })
-    return ids;
-  }
 
   useEffect(() => {
-    let array = [...cart_arr];
-    if (cart_state.sortedCartItem === 3) {
-      array.sort((a, b) => a.rating.rate - b.rating.rate);
-      setSorting(array)
-    } else if (cart_state.sortedCartItem === 2) {
-      array.sort((a, b) => a.price - b.price);
-      setSorting(array)
-    } else {
-      array.sort((a, b) => a.id - b.id);
-      setSorting(array)
-    }
-    const arr = getIds(array);
-    dispatch(setNavIds(arr))
-  }, [cart_state.sortedCartItem, cart_state.cart])
-
+  }, [sortedCartItem, cart])
 
   return (
     <>
       <div className="inner cart-height">
-        <ProductDiv leftTitle={'Back'} centerTitle={'Cart Items'} rightTitle={`Showing 1 - ${10} cart products results`} isSelect={true} />
-        <div className="cart-p products"> 
-          <Box sx={{ flexGrow: 1, }}>
-            <Grid container justifyContent="space-between" gap={5} rowSpacing={5} sx={{ width: '90%', margin: 'auto !important', padding: '1vw 2vw' }}>
-              {
-                sorting.length > 0 && sorting.map((e) => {
-                  return <Grid key={e.id} xs={12} md={5} lg={3} columnGap={3} min-Width={100} sx={{ minWidth: '30%' }}>
-                    <Item className={`card-item ${cart_state.theme === 'dark' ? 'dark-card' : 'light-card'}`}>
-                      <ProductCard data={e} carticon={false}/>
-                    </Item>
+        {
+          snack && <SnackBar changesnack={setSnack} message={'Item Removed Successfully'} color={'warning'} />
+        }
+        {
+          cart.length > 0 ?
+            <>
+              <ProductDiv cartValues={{ price: `Total Price - ${totalAmt.toFixed(2)}`, quan: `Total Quantity - ${totalCount}` }} centerTitle={'Cart Items'} toButton={'Buy Now'} isSelect={''} />
+              <div className="cart-p products">
+                <Box sx={{ flexGrow: 1 }} key={0}>
+                  <Grid container justifyContent="space-between" gap={0} sx={{ width: '90%', margin: 'auto !important', padding: '1vw 2vw' }}>
+                    {
+                      cart.length > 0 && cart.map((e, index) => {
+                        return <Grid key={index} sx={{ width: '100%', margin: 'auto' }}>
+                          <Item className={`card-item ${theme === 'dark' ? 'dark-card' : 'light-card'}`}>
+                            <CartCard data={e} snack={setSnack} />
+                          </Item>
+                        </Grid>
+                      })
+                    }
                   </Grid>
-                })
-              }
-            </Grid>
-          </Box>
-        </div>
+                </Box>
+              </div>
+            </> :
+            <div className='empty-div'>
+              <div >Your Cart is Empty</div>
+            </div>
+        }
       </div>
     </>
   )

@@ -7,16 +7,18 @@
 
 .inner {
     @extend .inner;
-    .navs{
+
+    .navs {
         width: 85%;
     }
 
     .products {
-        width: 82%;
+        width: 83%;
         position: absolute;
-        top: 15%;
+        margin-top: 2rem;
+        top: 13%;
         z-index: 1;
-        max-height: 40rem;
+        max-height: 70vh;
         overflow-y: scroll;
 
         .card-item {
@@ -32,10 +34,12 @@
                 height: 23rem;
             }
         }
-        .dark-card{
-            background: rgba(255, 255, 255, 0.20);
+
+        .dark-card {
+            background: rgba(255, 255, 255, 0.50);
         }
-        .light-card{
+
+        .light-card {
             background: rgba(255, 255, 255, 0.50);
         }
     }

@@ -7,37 +7,45 @@ import Typography from '@mui/material/Typography';
 
 // icons
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import DeleteIcon from '@mui/icons-material/Delete';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import RatingComp from '../rating';
 import { Link } from 'react-router-dom';
 
-import './productcard.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCartItems } from '../../features/allSlicer';
+import { setAddFavItem, setDeleteFavItem } from '../../features/allSlicer';
 
-const ProductCard = ({ data, carticon }) => {
+import './productcard.scss';
 
-  const cart_state = useSelector(state => state.all.cart)
-  const theme = useSelector(state => state.all.theme);
+const ProductCard = ({ data, favicon, snack }) => {
+
+  const fav = useSelector(state => state.all.fav);
 
   const [id, setId] = useState(0);
   const dispatch = useDispatch();
 
-  const setCart = (id) => {
+  const [isFav, setIsFav] = useState(false);
+
+
+  const setFav = (id, check) => {
     setId(id);
-    if (carticon) {
-      dispatch(setCartItems({ data: data, add: true }))
+    if (favicon && check) {
+      dispatch(setAddFavItem(data));
     } else {
-      const deleted = cart_state.filter((e) => {
-        return e.id !== id;
-      })
-      dispatch(setCartItems({ data: deleted, add: false }))
-      console.log(id, deleted);
+      snack(true)
+      dispatch(setDeleteFavItem(id));
     }
   }
 
+  useEffect(() => {
+    fav.forEach((e) => {
+      if (e.id === data.id) {
+        setIsFav(true)
+      }
+    })
+  }, [fav])
 
   const bg_color = ['red', 'green', 'blue', 'orange', 'pink', 'skyblue', 'brown', 'purple', 'teal', 'lavender'];
 
@@ -45,16 +53,23 @@ const ProductCard = ({ data, carticon }) => {
     <Card sx={{ padding: '1rem', backgroundColor: 'transparent' }} className='pro-card'>
       <div className='icons'>
         <Link to={`/preview/${data.id}`} className='text-decoration-none'>
-          <div className={`roundBorder ${theme === 'dark' ? 'zoomicon-dark' : 'zoomicon-light'} cursor-pointer`}>
-            <ZoomOutMapIcon sx={{color : `${theme === 'dark' ? 'white' : 'black'}`}}/>
+          <div className={`roundBorder cursor-pointer zoomicon`}>
+            <ZoomOutMapIcon />
           </div>
         </Link>
 
-        <div className={`roundBorder ${theme === 'dark' ? 'bagicon-dark' : 'bagicon-light'} cursor-pointer`} onClick={() => setCart(data.id)}>
-          {
-            carticon ? <ShoppingBagIcon sx={{color : `${theme === 'dark' ? 'white' : 'black'}`}}/> : <DeleteIcon sx={{color : `${theme === 'dark' ? 'white' : 'black'}`}}/>
-          }
-        </div>
+        {
+          favicon ?
+            <div className={`fav-div cursor-pointer`}>
+              {
+                isFav ? <FavoriteIcon style={{ fill: 'red', fontSize: '25px' }} onClick={() => {setFav(data.id, false); setIsFav(false)}} /> : <FavoriteBorderIcon style={{ fill: 'black', fontSize: '25px' }} onClick={() => {setFav(data.id, true); setIsFav(true)}} />
+              }
+            </ div>
+            :
+            <div className={`roundBorder cursor-pointer favicon `} onClick={() => setFav(data.id, false)}>
+              <DeleteIcon />
+            </div>
+        }
       </div>
 
       <CardContent>
@@ -73,10 +88,10 @@ const ProductCard = ({ data, carticon }) => {
         </Link>
       </CardContent>
 
-      <Typography className={`card-content card-content-1 ${theme === 'dark' ? 'light-font' : 'dark-font'}`}>
-        {data.title.length > 30 ? data.title.slice(0, 30) + '...' : data.title}
+      <Typography className={`card-content card-content-1`}>
+        {data.title.length > 40 ? data.title.slice(0, 40) + '...' : data.title}
       </Typography>
-      <Typography className={`card-content card-content-2 ${theme === 'dark' ? 'light-font' : 'dark-font'} `}>
+      <Typography className={`card-content card-content-2`}>
         &#8377;{data.price}
       </Typography>
       <Typography className='rating'>

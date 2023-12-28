@@ -13,26 +13,30 @@
         svg {
             font-size: 1rem;
         }
+
+        .fav-div {
+            display: flex;
+            align-items: center;
+        }
     }
 
-    .zoomicon-dark:hover,
-    .bagicon-dark:hover {
-        border: 1px solid white;
-        background-color: black;
-        fill: white;
-        color: white;
+    .disableIcon {
+        pointer-events: none;
+        opacity: 0.2;
     }
 
-    .zoomicon-light:hover,
-    .bagicon-light:hover {
+
+
+    .zoomicon:hover,
+    .favicon:hover {
         border: 1px solid black;
         background-color: white;
-        fill: black;
+        fill: white;
         color: black;
     }
 
     .roundBorder {
-        border: 1px solid rgb(147, 145, 145);
+        border: 1px solid white;
         padding: 0.4rem;
         border-radius: 50%;
         display: flex;
@@ -71,15 +75,6 @@
         align-items: center;
         justify-content: center;
         width: 85%;
-    }
-
-    .dark-font {
-        color: black;
-        font-weight: bolder;
-    }
-
-    .light-font {
-        color: white;
         font-weight: bolder;
     }
 

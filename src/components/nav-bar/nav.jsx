@@ -1,7 +1,7 @@
 import React from 'react'
-import "./nav.scss" 
+import "./nav.scss"
 
-import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -12,19 +12,16 @@ import SelectTheme from '../themes/themeswitch';
 
 const NavComp = () => {
     const loc = useLocation();
-    const state = useSelector(state => {
-        return {
-            theme : state.all.theme,
-            cart : state.all.cart
-        }
-    })
-    console.log(state.theme);
+
+    const theme = useSelector(state => state.all.theme);
+    const cart = useSelector(state => state.all.cart);
+    const fav = useSelector(state => state.all.fav);
     return (
         <>
-            <div className={`fullnav p-20 ${state.theme}`}>
+            <div className={`fullnav p-20 ${theme}`}>
                 <div className='inside '>
                     <div className='d-flex logo'>
-                        <ShoppingCartCheckoutIcon className='pr-10 logo-icon' />
+                        <ShoppingCartIcon className='pr-10 logo-icon' />
                         <div>
                             <p>We-6</p>
                             <p>Shopping</p>
@@ -41,13 +38,18 @@ const NavComp = () => {
                         <SelectTheme />
                         <Link to='/cart' className='text-decoration-none'>
                             <div className={`${loc.pathname === '/cart' ? 'active' : ''} `}>
-                                <Badge badgeContent={state.cart.length} color="secondary">
+                                <Badge badgeContent={cart.length} color="secondary">
                                     <ShoppingBagIcon sx={{ fill: 'white' }} />
                                 </Badge>
                             </div>
-
                         </Link>
-                        <div className={`${loc.pathname === '/fav' ? 'active' : ''} `}><FavoriteIcon sx={{ fill: 'white' }} /></div>
+                        <Link to='/wishlist' className='text-decoration-none'>
+                            <div className={`${loc.pathname === '/wishlist' ? 'active' : ''} `}>
+                                <Badge badgeContent={fav.length} color="secondary">
+                                    <FavoriteIcon sx={{ fill: 'white' }} />
+                                </Badge>
+                            </div>
+                        </Link>
                         <Tooltip title="Hi, Welcome Surya" arrow TransitionComponent={Zoom}>
                             <div className={`${loc.pathname === '/user' ? 'active' : ''} `}><AccountCircleIcon sx={{ fill: 'white' }} /></div>
                         </Tooltip>

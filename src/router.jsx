@@ -35,7 +35,11 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <MiniDrawer />,
         errorElement: <>404</>,
-      }        
+      },        
+      {
+        path: "/wishlist",
+        element: <MiniDrawer />,
+      } 
       
   ]);
 

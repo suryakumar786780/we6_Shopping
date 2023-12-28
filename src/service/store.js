@@ -14,7 +14,7 @@ import { Tuple } from "@reduxjs/toolkit";
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['all', 'products']
+    whitelist: ['all',]
 }
 
 const rootReducer = combineReducers({

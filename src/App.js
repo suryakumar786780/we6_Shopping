@@ -5,7 +5,7 @@ import Router from './router';
 function App() {
   const theme = useSelector(state =>  state.all.theme);
   return (
-    <div className={`${theme}`}>
+    <div className={`${theme} outer`}>
       <Router />
     </div>
   );
