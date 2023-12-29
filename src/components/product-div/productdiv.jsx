@@ -9,6 +9,7 @@ import { Button } from '@mui/material';
 
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import ModalComp from '../buy-modal/modalcomp';
 
 
 const ProductDiv = ({ nav, leftTitle, centerTitle, rightTitle, isSelect, toButton, cartValues }) => {
@@ -47,11 +48,20 @@ const ProductDiv = ({ nav, leftTitle, centerTitle, rightTitle, isSelect, toButto
     nav && navigate(`/preview/${navIds[change]}`, { replace: true });
   }
 
+  const [modal, setModal] = useState(false);
+  const showModal = () => {
+    setModal(true);
+  }
+
   useEffect(() => {
     if (posI === 0) {
       setDis({ p: true, n: false })
-    } else if (posI === navIds.length - 1) {
+    }
+    if (posI === navIds.length - 1) {
       setDis({ p: false, n: true })
+    }
+    if(navIds.length === 1){
+      setDis({ p: true, n: true })
     }
   }, [posI])
 
@@ -74,11 +84,24 @@ const ProductDiv = ({ nav, leftTitle, centerTitle, rightTitle, isSelect, toButto
           </div>
           <div className={`select-div ${toButton ? 'buy' : 'select'}`}>
             <ListItemComp value={rightTitle} classname='mr-10' />
-            {isSelect ? <SelectBox /> : isSelect === false ?
-              <div className='east-west'>
-                <Button variant="outlined" disabled={dis.p} className={`${dis.p && 'disabled'} ${theme === 'dark' ? 'dark-btn' : 'light-btn'}`} onClick={() => previewChange(0)}>Previous</Button>
-                <Button variant="outlined" disabled={dis.n} className={`${dis.n && 'disabled'} ${theme === 'dark' ? 'dark-btn' : 'light-btn'}`} onClick={() => previewChange(1)}>Next</Button>
-              </div> : toButton ? <Button variant="contained" style={{ backgroundColor: 'gold', color: 'black', fontWeight: 'bold' }} className='buy-btn'>{toButton} &nbsp; <ShoppingBasketIcon /></Button> : ''
+            {isSelect
+              ? <SelectBox /> : isSelect === false
+                ?
+                <div className='east-west'>
+                  <Button variant="outlined" disabled={dis.p} className={`${dis.p && 'disabled'} ${theme === 'dark' ? 'dark-btn' : 'light-btn'}`} onClick={() => previewChange(0)}>Previous</Button>
+                  <Button variant="outlined" disabled={dis.n} className={`${dis.n && 'disabled'} ${theme === 'dark' ? 'dark-btn' : 'light-btn'}`} onClick={() => previewChange(1)}>Next</Button>
+                </div>
+                : toButton
+                  ? <Button variant="contained" style={{ backgroundColor: 'gold', color: 'black', fontWeight: 'bold' }}
+                  className='buy-btn' onClick={showModal}>
+                    <span>{toButton}</span>
+                    <ShoppingBasketIcon />
+                  </Button>
+                  : ''
+            }
+
+            {
+              modal ? <ModalComp isOpen={true} toClose={setModal}/> : ''
             }
           </div>
         </ul>

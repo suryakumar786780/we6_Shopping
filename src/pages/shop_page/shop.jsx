@@ -55,7 +55,10 @@ const Shop = () => {
         } else {
           res = await dispatch(getCatgProducts(catg));
         }
-        let array = [...res.payload];
+        let array;
+        if (res.payload && res.payload.length > 0) {
+          array = [...res.payload]
+        }
         sortArrays(array)
         setSorting(array)
         const arr = getIds(array);

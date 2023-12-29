@@ -8,7 +8,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link, useLocation } from 'react-router-dom';
 import { Badge, Tooltip, Zoom } from '@mui/material';
 import { useSelector } from 'react-redux';
-import SelectTheme from '../themes/themeswitch';
+import SelectTheme from '../themeswitch';
 
 const NavComp = () => {
     const loc = useLocation();

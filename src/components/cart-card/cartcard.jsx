@@ -1,29 +1,25 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useDispatch } from 'react-redux'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 import './cartcard.scss'
 import RatingComp from '../rating'
 import { setCartItemQuantity, setDeleteCartItem } from '../../features/allSlicer';
-// import SnackBar from '../snackbar';
+
 
 const CartComp = ({ data, snack }) => {
-  // const [snack, setSnack] = useState(false);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const deleteItem = () => {
     snack(true);
     dispatch(setDeleteCartItem(data))
   }
-
   const quantity = (check) => {
     dispatch(setCartItemQuantity({
       add: check,
       data
     }))
-
-
   }
 
   return (
@@ -50,7 +46,9 @@ const CartComp = ({ data, snack }) => {
         <div className="total-amt margin-cart">Total Amount - {data.specs.amount}</div>
         <div className="total-quanity margin-cart">Total Quantity </div>
         <div className="count-quantity margin-cart">
-          <RemoveCircleOutlineIcon onClick={() => quantity(false)} />  <span>{data.specs.quantity}</span> <AddCircleOutlineIcon onClick={() => quantity(true)} />
+          <RemoveCircleOutlineIcon onClick={() => quantity(false)} className={`${data.specs.quantity === 1 && 'disableIcon'}`} />
+          <span>{data.specs.quantity}</span>
+          <AddCircleOutlineIcon onClick={() => quantity(true)} className={`${data.specs.quantity === 10 && 'disableIcon'}`} />
         </div>
         <div className="add-cart cursor-pointer" onClick={deleteItem}>Remove from cart</div>
       </div>

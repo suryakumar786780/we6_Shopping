@@ -1,11 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-
 import getAllSlicer from '../features/allSlicer'
 import getAllProduct from '../features/getitemslicer';
 import productReducer from '../features/getSingleItemSlicer';
 import categoriesReducer from '../features/getCategoriesSlicer'
 import getAllCatgProducts from '../features/getCatgProducts'
-
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import { thunk } from 'redux-thunk';

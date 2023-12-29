@@ -51,6 +51,7 @@ const getAllSlicer = createSlice({
             state.cart.splice(removeId, 1)
         },
         setCartItemQuantity: (state, { payload }) => {
+            
             const addQuan = findIndexForCart(payload.data, state.cart);
             let q = state.cart[addQuan].specs.quantity;
             let p = state.cart[addQuan].product.price;
@@ -68,8 +69,6 @@ const getAllSlicer = createSlice({
     },
 
 })
-
-
 
 export const { setTheme, setSortingType, setCategory, setNavIds, setAddFavItem, setDeleteFavItem, setCartItems, setAddCartItem, setDeleteCartItem, setCartItemQuantity } = getAllSlicer.actions;
 export default getAllSlicer.reducer;

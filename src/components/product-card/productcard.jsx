@@ -7,9 +7,10 @@ import Typography from '@mui/material/Typography';
 
 // icons
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
-import DeleteIcon from '@mui/icons-material/Delete';
+import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import IconButton from '@mui/material/IconButton';
 
 import RatingComp from '../rating';
 import { Link } from 'react-router-dom';
@@ -34,7 +35,7 @@ const ProductCard = ({ data, favicon, snack }) => {
     if (favicon && check) {
       dispatch(setAddFavItem(data));
     } else {
-      snack(true)
+      if (!favicon) snack(true)
       dispatch(setDeleteFavItem(id));
     }
   }
@@ -57,17 +58,22 @@ const ProductCard = ({ data, favicon, snack }) => {
             <ZoomOutMapIcon />
           </div>
         </Link>
-
         {
           favicon ?
             <div className={`fav-div cursor-pointer`}>
               {
-                isFav ? <FavoriteIcon style={{ fill: 'red', fontSize: '25px' }} onClick={() => {setFav(data.id, false); setIsFav(false)}} /> : <FavoriteBorderIcon style={{ fill: 'black', fontSize: '25px' }} onClick={() => {setFav(data.id, true); setIsFav(true)}} />
+                isFav
+                  ? <IconButton>
+                    <FavoriteIcon style={{ fill: 'red', fontSize: '25px' }} onClick={() => { setFav(data.id, false); setIsFav(false) }} />
+                  </IconButton>
+                  : <IconButton>
+                    <FavoriteBorderIcon style={{ fill: 'black', fontSize: '25px' }} onClick={() => { setFav(data.id, true); setIsFav(true) }} />
+                  </IconButton>
               }
             </ div>
             :
             <div className={`roundBorder cursor-pointer favicon `} onClick={() => setFav(data.id, false)}>
-              <DeleteIcon />
+              <CloseSharpIcon />
             </div>
         }
       </div>

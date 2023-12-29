@@ -14,9 +14,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useLocation, useParams } from 'react-router-dom';
-import Login from '../../pages/login/login';
+import Login from '../../pages/home/home';
 import Shop from '../../pages/shop_page/shop';
-import About from '../../pages/about';
+import About from '../../pages/about/about';
 import Preview from '../../pages/preview/preview';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../../features/getCategoriesSlicer';
@@ -121,6 +121,7 @@ export default function MiniDrawer() {
   useEffect(() => {
     (async () => {
       const res = await dispatch(getCategories());
+      if(res.payload &&  res.payload.length > 0)
       setCatg(["All", ...res.payload]);
     })()
   }, [])

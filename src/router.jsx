@@ -3,42 +3,39 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-
-// import Login from './pages/login/login';
-// import Register from './pages/register';
-// import Home from './pages/home';
-// import ErrorPage from './pages/errorpage';
-// import Shop from './pages/shop_page/shop';
-// import About from './pages/about';
 import MiniDrawer from './components/mini-drawer/drawer';
+import ErrorPage from './pages/404page/errorpage';
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <MiniDrawer />,
-      errorElement: <>404</>,
+      errorElement: <ErrorPage />,
     },
     {
         path: "/shop",
         element: <MiniDrawer />,
+        errorElement: <ErrorPage />,
       },
       {
         path: "/about",
         element: <MiniDrawer />,
+        errorElement: <ErrorPage />,
       },  
       {
         path: "/preview/:id",
         element: <MiniDrawer />,
-        errorElement: <>404</>,
+        errorElement: <ErrorPage />,
       },
       {
         path: "/cart",
         element: <MiniDrawer />,
-        errorElement: <>404</>,
+        errorElement: <ErrorPage />,
       },        
       {
         path: "/wishlist",
         element: <MiniDrawer />,
+        errorElement: <ErrorPage />,
       } 
       
   ]);

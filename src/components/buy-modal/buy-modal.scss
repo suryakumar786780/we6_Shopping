@@ -1,0 +1,21 @@
+.row-1 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.datepicker {
+    .MuiTextField-root {
+        width: 100%;
+    }
+}
+
+.thankpage {
+    text-align: center;
+
+    .thank-content {
+        margin-top: 2rem;
+        font-weight: bold;
+        color: green;
+    }
+}

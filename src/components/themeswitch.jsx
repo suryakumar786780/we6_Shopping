@@ -1,10 +1,9 @@
 import { FormControlLabel } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
-import './themeswitch.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTheme } from '../../features/allSlicer';
+import { setTheme } from '../features/allSlicer';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     height: 34,
@@ -59,12 +58,12 @@ export default function CustomizedSwitches() {
     const realTheme = theme === 'dark' ? true : false;
     const [isDark, setIsDark] = useState(realTheme);
     const dispatch = useDispatch();
+    if (isDark) dispatch(setTheme('dark'))
+    else dispatch(setTheme('light'));
 
     useEffect(() => {
-        if (time >= 18) dispatch(setTheme('dark'))
+        if (time >= 18 && time < 6) dispatch(setTheme('dark'))
         else dispatch(setTheme('light'))
-        if (isDark) dispatch(setTheme('dark'))
-        else dispatch(setTheme('light'));
     }, [isDark])
 
     return (

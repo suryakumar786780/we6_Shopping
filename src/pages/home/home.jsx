@@ -1,6 +1,6 @@
 import React from 'react'
 import NavMain from '../../components/nav-main/navmain'
-import "./login.scss"
+import "./home.scss"
 import Partners from '../../components/partners/partners'
 const Login = () => {
   return (

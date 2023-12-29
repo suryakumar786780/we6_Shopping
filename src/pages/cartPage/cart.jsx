@@ -42,7 +42,7 @@ const CartComp = () => {
     <>
       <div className="inner cart-height">
         {
-          snack && <SnackBar changesnack={setSnack} message={'Item Removed Successfully'} color={'warning'} />
+          snack && <SnackBar changesnack={setSnack} message={'Item Removed from Cart Successfully'} color={'warning'} />
         }
         {
           cart.length > 0 ?

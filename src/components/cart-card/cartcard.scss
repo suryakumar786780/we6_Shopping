@@ -15,7 +15,8 @@
 .cart-img {
     background-color: white;
     width: 30%;
-    .cart-img-price{
+
+    .cart-img-price {
         font-weight: bold;
     }
 }
@@ -26,10 +27,11 @@
     width: 40%;
     text-align: start;
 
-    .name{
+    .name {
         font-size: 20px;
         color: black;
     }
+
     .cart-rating {
         display: flex;
         align-items: center;
@@ -54,6 +56,11 @@
             margin-right: 10px;
         }
 
+        .disableIcon {
+            pointer-events: none;
+            opacity: 0.2;
+        }
+
         svg {
             cursor: pointer;
             margin-right: 10px;
@@ -65,4 +72,6 @@
             @extend .add-cart;
         }
     }
+
+
 }
