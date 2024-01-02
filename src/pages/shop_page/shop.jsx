@@ -39,7 +39,7 @@ const Shop = () => {
     } else if (sortedPro === 2) {
       array.sort((a, b) => a.price - b.price);
       setSorting(array)
-    } else {
+    } else if (sortedPro === 1) {
       array.sort((a, b) => a.id - b.id);
       setSorting(array)
     }
@@ -58,11 +58,11 @@ const Shop = () => {
         let array;
         if (res.payload && res.payload.length > 0) {
           array = [...res.payload]
+          sortArrays(array)
+          setSorting(array)
+          const arr = getIds(array);
+          dispatch(setNavIds(arr))
         }
-        sortArrays(array)
-        setSorting(array)
-        const arr = getIds(array);
-        dispatch(setNavIds(arr))
       })()
     }
   }, [catg])

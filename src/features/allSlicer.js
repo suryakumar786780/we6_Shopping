@@ -3,14 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     theme: '',
     sortingType: 1,
-    category: 'all',
+    category: 'All',
     navIds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
     cart: [],
     fav:[],
-    totalAmount: 0
+    totalAmount: 0,
+    customerInformation:{}
 }
-
-
 
 const findIndexForCart = (val, arr) => {
     return arr.findIndex(e => e.product.id === val.product.id && e.specs.color === val.specs.color && e.specs.size === val.specs.size)
@@ -51,7 +50,6 @@ const getAllSlicer = createSlice({
             state.cart.splice(removeId, 1)
         },
         setCartItemQuantity: (state, { payload }) => {
-            
             const addQuan = findIndexForCart(payload.data, state.cart);
             let q = state.cart[addQuan].specs.quantity;
             let p = state.cart[addQuan].product.price;
@@ -64,11 +62,14 @@ const getAllSlicer = createSlice({
                 let num = (q-1) * p;
                 state.cart[addQuan].specs.amount = num.toFixed(2);
             }
+        },
+        setCustomerInformation:(state, {payload}) => {
+            state.customerInformation = {...payload}
         }
 
     },
 
 })
 
-export const { setTheme, setSortingType, setCategory, setNavIds, setAddFavItem, setDeleteFavItem, setCartItems, setAddCartItem, setDeleteCartItem, setCartItemQuantity } = getAllSlicer.actions;
+export const { setTheme, setSortingType, setCategory, setNavIds, setAddFavItem, setDeleteFavItem, setCartItems, setAddCartItem, setDeleteCartItem, setCartItemQuantity, setCustomerInformation } = getAllSlicer.actions;
 export default getAllSlicer.reducer;
