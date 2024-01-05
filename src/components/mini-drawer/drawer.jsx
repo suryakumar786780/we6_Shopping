@@ -121,8 +121,8 @@ export default function MiniDrawer() {
   useEffect(() => {
     (async () => {
       const res = await dispatch(getCategories());
-      if(res.payload &&  res.payload.length > 0)
-      setCatg(["All", ...res.payload]);
+      if (res.payload && res.payload.length > 0)
+        setCatg(["All", ...res.payload]);
     })()
   }, [])
 
@@ -140,7 +140,7 @@ export default function MiniDrawer() {
           <Divider />
           <List>
             {catg.length > 0 && catg.map((text, index) => (
-              <ListItem key={text} disablePadding sx={{ display: 'block' }} onClick={() => { setActive(text); changeCatg(text) }} style={{ backgroundColor: active === text && theme === 'dark' ?  'gray' : active === text ? 'violet' : ''}}>
+              <ListItem key={text} disablePadding sx={{ display: 'block' }} onClick={() => { setActive(text); changeCatg(text) }} style={{ backgroundColor: active === text && theme === 'dark' ? 'gray' : active === text ? 'violet' : '' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -173,30 +173,8 @@ export default function MiniDrawer() {
 
       <Box component="main" sx={{ flexGrow: 1, p: 0 }}>
         <NavComp />
-        { loc.pathname === '/' ? <Login /> : loc.pathname === '/shop' ? <Shop /> : loc.pathname === '/about' ? <About /> : loc.pathname === '/cart' ? <CartComp /> : loc.pathname === '/wishlist' ? <Wishlist /> :  useP.id && <Preview />
+        {loc.pathname === '/' ? <Login /> : loc.pathname === '/shop' ? <Shop /> : loc.pathname === '/about' ? <About /> : loc.pathname === '/cart' ? <CartComp /> : loc.pathname === '/wishlist' ? <Wishlist /> : useP.id && <Preview />
         }
-          {/* {(() => {
-            if(!useP.id){
-              switch (loc.pathname) {
-              case '/':
-                return <Login />
-              case '/shop':
-                return <Shop /> 
-              case '/about':
-                return <About />
-              case '/cart':
-                return <CartComp />
-              case '/wishlist':
-                return <Wishlist />
-              default:
-                return 404;
-            }
-            } else {
-             +useP.id && <Preview />
-            }
-            
-          })()} */}
-         
       </Box>
     </Box>
   );
