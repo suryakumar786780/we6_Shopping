@@ -10,6 +10,7 @@ import { Box, Grid } from '@mui/material'
 import styled from '@mui/system/styled';
 
 import './shop.scss';
+
 import { getCatgProducts } from '../../features/getCatgProducts'
 import { setNavIds } from '../../features/allSlicer'
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import NavMain from '../../components/nav-main/navmain'
-import "./home.scss"
 import Partners from '../../components/partners/partners'
-const Login = () => {
+import "./home.scss"
+const Home = () => {
   return (
     <>
       <div className='outer'>
@@ -12,8 +12,7 @@ const Login = () => {
         </div>
       </div>
     </>
-
   )
 }
 
-export default Login
+export default Home
