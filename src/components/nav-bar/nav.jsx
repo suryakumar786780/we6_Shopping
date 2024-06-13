@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link, useLocation } from 'react-router-dom';
 import { Badge, Fade, Tooltip, tooltipClasses } from '@mui/material';
 import { useSelector } from 'react-redux';
@@ -10,6 +9,8 @@ import SelectTheme from '../themeswitch';
 
 import "./nav.scss"
 import styled from '@emotion/styled';
+import axios from 'axios';
+import BasicMenu from '../menu/menu';
 
 const CustomWidthTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -31,6 +32,14 @@ const NavComp = () => {
     if (info.name) {
         tooltip = 'Hello ' + info.name + ',\n ' + info.email + ',\n ' + info.mobNum;
     }
+    const token = localStorage.getItem('token')
+    useEffect(() => {
+        // const result = axios.get('http://127.0.0.1:7001/api/user/getUserData',
+        //     { headers: { "Authorization": `Bearer ${token}` } })
+        //     .then(res => console.log(res))
+        //     .catch(err => console.log(err))
+    })
+
     return (
         <>
             <div className={`fullnav p-20 ${theme}`}>
@@ -65,11 +74,11 @@ const NavComp = () => {
                                 </Badge>
                             </div>
                         </Link>
-                        <CustomWidthTooltip title={tooltip} arrow TransitionComponent={Fade}
+                        {/* <CustomWidthTooltip title={tooltip} arrow TransitionComponent={Fade}
                             TransitionProps={{ timeout: 600 }}
-                        >
-                            <div className={`${loc.pathname === '/user' ? 'active' : ''} `}><AccountCircleIcon sx={{ fill: 'white' }} /></div>
-                        </CustomWidthTooltip >
+                        > */}
+                        <div style={{ padding: 0, display: 'block' }} className={`${loc.pathname === '/user' ? 'active' : ''} `}><BasicMenu /></div>
+                        {/* </CustomWidthTooltip > */}
                     </div>
                 </div>
             </div>

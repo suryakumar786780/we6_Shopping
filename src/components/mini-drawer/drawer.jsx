@@ -14,7 +14,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useLocation, useParams } from 'react-router-dom';
-import Login from '../../pages/home/home';
+import Home from '../../pages/home/home';
 import Shop from '../../pages/shop_page/shop';
 import About from '../../pages/about/about';
 import Preview from '../../pages/preview/preview';
@@ -154,7 +154,8 @@ export default function MiniDrawer() {
 
       <Box component="main" sx={{ flexGrow: 1, p: 0 }}>
         <NavComp />
-        {loc.pathname === '/' ? <Login /> : loc.pathname === '/shop' ? <Shop /> : loc.pathname === '/about' ? <About /> : loc.pathname === '/cart' ? <CartComp /> : loc.pathname === '/wishlist' ? <Wishlist /> : useP.id && <Preview />
+        {
+          loc.pathname === '/' ? <Home /> : loc.pathname === '/shop' ? <Shop /> : loc.pathname === '/about' ? <About /> : loc.pathname === '/cart' ? <CartComp /> : loc.pathname === '/wishlist' ? <Wishlist /> : useP.id && <Preview />
         }
       </Box>
     </Box>

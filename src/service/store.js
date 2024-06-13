@@ -4,6 +4,8 @@ import getAllProduct from '../features/getitemslicer';
 import productReducer from '../features/getSingleItemSlicer';
 import categoriesReducer from '../features/getCategoriesSlicer'
 import getAllCatgProducts from '../features/getCatgProducts'
+import getRestaurantSlicer from '../features/getSingleRestaurantData'
+import postAuthUserSlicer from '../features/userAuth'
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import { thunk } from 'redux-thunk';
@@ -20,7 +22,9 @@ const rootReducer = combineReducers({
     products: getAllProduct,
     product: productReducer,
     categories: categoriesReducer,
-    catgProducts: getAllCatgProducts
+    catgProducts: getAllCatgProducts,
+    restaurant:getRestaurantSlicer,
+    loginStatus: postAuthUserSlicer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
